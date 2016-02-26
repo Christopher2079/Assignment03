@@ -39,7 +39,7 @@
                 <p class="event received">Device is Ready</p>
             </div>
         </div>
-        <button type="button" onclick="getLists">Click Me!</button>
+        <button class="Button" type="button" onclick="getLists()" >Click Me!</button>
 
         <div id="getLists">getListsTest</div>
         <script type="text/javascript" src="cordova.js"></script>
@@ -48,7 +48,7 @@
             app.initialize();
             
             function getLists(){
-    
+                document.getElementById("getLists").innerHTML = "test";
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function() 
                 {
@@ -56,7 +56,7 @@
                         document.getElementById("getLists").innerHTML = xhttp.responseText;
                     }
                 };
-                xhttp.open("GET", "getLists.php?UserId=" + 1, true);
+                xhttp.open("GET", "http://icarus.cs.weber.edu/~cs79098/CS3750/getLists.php?UserId=" + 1, true);
                 xhttp.send();
             }
         </script>
