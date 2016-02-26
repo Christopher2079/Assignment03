@@ -1,7 +1,7 @@
 <?php
     $UserId = -1;
     $UserId = $_REQUEST["UserId"];
-    echo "test1";
+    //echo "test1";
     if($UserId > 0) {
         echo "Test2";
         $db = mysqli_connect('localhost',
