@@ -18,10 +18,14 @@
                 echo sprintf("ListId: %s | ListName: %s ", htmlspecialchars($row['ListId']), htmlspecialchars($row['ListName']));
                 echo "<br>";
             }
-        } else {
+            return "this";
+        } 
+        else {
             echo "No Lists Found";
         }
-    } else{
+        
+    } 
+    else{
         echo "ERROR! No Lists found";
     }
 ?>
