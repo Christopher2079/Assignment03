@@ -1,14 +1,15 @@
 <?php
     $UserId = -1;
     $UserId = $_REQUEST["UserId"];
+    echo "test1";
     if($UserId > 0) {
-        //echo "Test";
+        echo "Test2";
         $db = mysqli_connect('localhost',
             'W01162084',
             'Jaysoncs!',
             'W01162084');
 
-        $sql = "SELECT * FROM LISTS WHERE ListId = " . $UserID;
+        $sql = "SELECT * FROM Lists WHERE ListId = " . $UserId;
 
 
         $result = mysqli_query($db, $sql);
@@ -23,9 +24,4 @@
     } else{
         echo "ERROR! No Lists found";
     }
-
-
-
-
-
 ?>
