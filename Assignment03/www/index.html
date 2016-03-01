@@ -91,16 +91,18 @@
                    });
                     
                     */
-                    $('.text').text("test"); 
+                    $('.text').html("test"); 
                     $.ajax({
-                        url: 'http://icarus.cs.weber.edu/~cs79098/CS3750/getLists.php?UserId=1?callback=?',
+                        url: 'http://icarus.cs.weber.edu/~cs79098/CS3750/getLists.php?callback=?',
                         success: function(data){
-                            $('.text').text(JSON.stringify(data)); 
+                            $('.text').html(data);
+                        },
+                        error: function(){
+                            $('.text').html("error");
                         }
                     });
             
-                alert("done with ajjax call");
-                    
+                    alert("done with ajjax call");                    
 
         </script>
         
