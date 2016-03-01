@@ -49,18 +49,13 @@
         
         <script type="text/javascript">
             app.initialize();
-                            document.getElementById("getLists").innerHTML = "testhtml";
-
+                
             }
         </script>
         
         <script>
             
-                $( document ).bind( "mobileinit", function() {
-                // Make your jQuery Mobile framework configuration changes here!
-
-                $.mobile.allowCrossDomainPages = true;
-            });
+            
                 
 
  
@@ -98,15 +93,7 @@
             alert("Start Ajax");                    
 
             $('.text').html("testjqery"); 
-            $.ajax({
-                url: 'http://icarus.cs.weber.edu/~cs79098/CS3750/getLists.php?callback=?',
-                success: function(data){
-                    $('.text').html(data);
-                },
-                error: function(){
-                    $('.text').html("error");
-                }
-            });
+            
 
             alert("done with ajjax call");                    
 
