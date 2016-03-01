@@ -47,12 +47,9 @@
         <div id="getLists" class="text">getListsTest</div>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
+        
         <script type="text/javascript">
             app.initialize();
-            
-
-                
-
                 
             }
         </script>
@@ -69,16 +66,16 @@
                     
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function() {
-                    if (xhttp.readyState == 4 && xhttp.status == 200) {
-                        alert("Done with getting test");
+                    //if (xhttp.readyState == 4 && xhttp.status == 200) {
+                        alert("onreadystatechange value is: " + xhttp.readyState + " with status " + xhttp.status);
                         document.getElementById("getLists").innerHTML = xhttp.responseText;
-                    }
+                    //}
                 };
-                xhttp.open("GET", "http://icarus.cs.weber.edu/~cs79098/CS3750/getLists.php?UserId=1", true);
+                xhttp.open("GET", "http://icarus.cs.weber.edu/~cs79098/CS3750/getListsblash.php?UserId=1", true);
                 xhttp.send();
                 
                 
-                alert("done with httprequest");
+                alert("DONE");
                 }
             
             /*
