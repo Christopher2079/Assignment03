@@ -27,6 +27,4 @@
     else{
         echo "ERROR! No Lists found";
     }
-
-    echo $_GET['callback'].'('.json_encode($data).')';
 ?>
