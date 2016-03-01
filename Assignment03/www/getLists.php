@@ -3,7 +3,7 @@
     $UserId = $_REQUEST["UserId"];
     //echo "test1";
     if($UserId > 0) {
-        echo "Test2";
+        //echo "Test2";
         $db = mysqli_connect('localhost',
             'W01162084',
             'Jaysoncs!',
@@ -18,7 +18,6 @@
                 echo sprintf("ListId: %s | ListName: %s ", htmlspecialchars($row['ListId']), htmlspecialchars($row['ListName']));
                 echo "<br>";
             }
-            return "this";
         } 
         else {
             echo "No Lists Found";

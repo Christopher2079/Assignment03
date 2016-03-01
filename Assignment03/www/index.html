@@ -50,12 +50,22 @@
         <script type="text/javascript">
             app.initialize();
             
-            function getLists(){
-                document.getElementById("getLists").innerHTML = "test";
+
+                
+
+                
+            }
+        </script>
+        
+        <script>
+            
+            
+            document.getElementById("getLists").innerHTML = "test";
+                
+
+                function getLists(){ 
                 
                 
-                
-                /*
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function() 
                 {
@@ -65,12 +75,14 @@
                 };
                 xhttp.open("GET", "http://icarus.cs.weber.edu/~cs79098/CS3750/getLists.php?UserId=1" , true);
                 xhttp.send();
-                */
-            }
-        </script>
-        <script>
-            $.ajax({
-                    type: "POST",
+                
+                
+                alert("done with httprequest");
+                }
+            
+            /*
+             $.ajax({
+                    type: "GET",
                     url: "http://icarus.cs.weber.edu/~cs79098/CS3750/getLists.php?UserId=1",
                     contentType: "application/json; charset=utf-8",
                     data: "{}",
@@ -80,7 +92,9 @@
                     }
                     error: function () {}
                    });
+            */
 
         </script>
+        
     </body>
 </html>
