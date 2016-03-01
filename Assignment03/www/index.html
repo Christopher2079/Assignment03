@@ -60,7 +60,7 @@
                 
 
  
-                /*   
+                 /*
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function() {
                     //if (xhttp.readyState == 4 && xhttp.status == 200) {
@@ -68,15 +68,13 @@
                         document.getElementById("getLists").innerHTML = xhttp.responseText;
                     //}
                 };
-                xhttp.open("GET", "http://icarus.cs.weber.edu/~cs79098/CS3750/getListsblash.php?UserId=1", true);
+                xhttp.open("GET", "http://icarus.cs.weber.edu/~cs79098/CS3750/getListsblash.php?UserId=1?callback=?", true);
                 xhttp.send();
                 
                 
                 alert("DONE");
-                }
+
                 */
-                
-                
             
             //$('#btnGetList').click(function () {
                 /*
@@ -95,14 +93,13 @@
                     */
                     $('.text').text("test"); 
                     $.ajax({
-                        url: 'http://icarus.cs.weber.edu/~cs79098/CS3750/getListsblash.php?callback=?',
+                        url: 'http://icarus.cs.weber.edu/~cs79098/CS3750/getLists.php?UserId=1?callback=?',
                         success: function(data){
                             $('.text').text(JSON.stringify(data)); 
                         }
                     });
             
                 alert("done with ajjax call");
-                $.ajax({ url:'http://nitobi.com/timkim/simplejsonp.php?callback=?', success:function(data){ $('#text').html(data); } });
                     
 
         </script>
