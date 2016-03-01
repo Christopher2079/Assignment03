@@ -43,24 +43,24 @@
         </div>
         <button id="btnGetList" class="Button" type="button" onclick="getLists()" >Click Me!</button>
 
-        <div id="text" class="text">Replace me</div>
+        <div id="text" class="text">Replace me!</div>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         
         <script type="text/javascript">
             app.initialize();
-                
+                            document.getElementById("getLists").innerHTML = "testhtml";
+
             }
         </script>
         
         <script>
             
             
-            //document.getElementById("getLists").innerHTML = "test";
                 
 
  
-                 /*
+/*
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function() {
                     //if (xhttp.readyState == 4 && xhttp.status == 200) {
@@ -74,10 +74,10 @@
                 
                 alert("DONE");
 
-                */
+                
             
             //$('#btnGetList').click(function () {
-                /*
+                
              $.ajax({
                     type: "GET",
                     url: "http://icarus.cs.weber.edu/~cs79098/CS3750/getListsblash.php?UserId=1",
@@ -90,19 +90,21 @@
                     error: function () {}
                    });
                     
-                    */
-                    $('.text').html("test"); 
-                    $.ajax({
-                        url: 'http://icarus.cs.weber.edu/~cs79098/CS3750/getLists.php?callback=?',
-                        success: function(data){
-                            $('.text').html(data);
-                        },
-                        error: function(){
-                            $('.text').html("error");
-                        }
-                    });
-            
-                    alert("done with ajjax call");                    
+*/
+            alert("Start Ajax");                    
+
+            $('.text').html("testjqery"); 
+            $.ajax({
+                url: 'http://icarus.cs.weber.edu/~cs79098/CS3750/getLists.php?callback=?',
+                success: function(data){
+                    $('.text').html(data);
+                },
+                error: function(){
+                    $('.text').html("error");
+                }
+            });
+
+            alert("done with ajjax call");                    
 
         </script>
         
