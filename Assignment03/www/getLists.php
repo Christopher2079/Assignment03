@@ -1,4 +1,4 @@
-<?php header('content-type: application/json; charset=utf-8');
+<?php 
     $UserId = -1;
     $UserId = $_REQUEST["UserId"];
     //echo "test1";
@@ -16,7 +16,7 @@
         if ($result) {
             while ($row = mysqli_fetch_assoc($result)) {
                 echo sprintf("ListId: %s | ListName: %s ", htmlspecialchars($row['ListId']), htmlspecialchars($row['ListName']));
-                echo "<br>";
+               // echo "<br>";
             }
         } 
         else {
@@ -27,7 +27,5 @@
     else{
         echo "ERROR! No Lists found";
     }
-    $data = array(1, 2, 3, 4, 5, 6, 7, 8, 9);
 
-    echo $_GET['callback'] . '('.json_encode($data).')';
 ?>
