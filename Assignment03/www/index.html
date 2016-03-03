@@ -53,11 +53,21 @@
         </script>
         
         <script>
-            function getLists(){
-                
-            }
+            var url = "http://icarus.cs.weber.edu/~cs79098/CS3750/getLists.php?UserId=1";
+
+            $.get(url).done(function (data) {
+                    alert(data);
+            });
+
+            // Using XMLHttpRequest
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", url, true);
+            xhr.onload = function () {
+                alert(xhr.responseText);
+            };
+            xhr.send();
             
-            //document.getElementById("getLists").innerHTML = "test";
+            //alert("done with ajjax call");                    
                 
 
  
@@ -75,22 +85,8 @@
 
             alert("DONE");
 */
-            
-                
-             $.ajax({
-                    type: "GET",
-                    url: "http://icarus.cs.weber.edu/~cs79098/CS3750/getLists.php?UserId=1&?callback=?",
-                    dataType: 'jsonp',
-                    success: function (data) { 
-                        $('.text').text(JSON.stringify(data)); 
-                    },
-                    error: function () {$('.text').html("AJAX ERROR");}
-                   });
-            
-                            alert("done with ajjax call");                    
-
-                    
-                /*
+                               
+/*
                 $('.text').html("test"); 
                 $.ajax({
                     url: 'http://icarus.cs.weber.edu/~cs79098/CS3750/getLists.php?UserId=1&?callback=?',
@@ -101,7 +97,7 @@
                         $('.text').html("ERROR");
                     }
                 });
-               */
+*/
 
         </script>
         
