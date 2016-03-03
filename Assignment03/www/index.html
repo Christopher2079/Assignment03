@@ -28,10 +28,8 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <title>Hello World</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 
     </head>
-    
     
     <body>
         <div class="app">
@@ -43,10 +41,11 @@
         </div>
         <button id="btnGetList" class="Button" type="button" onclick="getLists()" >Click Me!</button>
 
-        <div id="text" class="text">Replace me!</div>
+        <div id="text" class="text">Replace me</div>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
-        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
         <script type="text/javascript">
             app.initialize();
                 
@@ -54,48 +53,55 @@
         </script>
         
         <script>
+            function getLists(){
+                
+            }
             
-            
+            //document.getElementById("getLists").innerHTML = "test";
                 
 
  
 /*
-                var xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function() {
-                    //if (xhttp.readyState == 4 && xhttp.status == 200) {
-                        alert("onreadystatechange value is: " + xhttp.readyState + " with status " + xhttp.status);
-                        document.getElementById("getLists").innerHTML = xhttp.responseText;
-                    //}
-                };
-                xhttp.open("GET", "http://icarus.cs.weber.edu/~cs79098/CS3750/getListsblash.php?UserId=1?callback=?", true);
-                xhttp.send();
-                
-                
-                alert("DONE");
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                //if (xhttp.readyState == 4 && xhttp.status == 200) {
+                    alert("onreadystatechange value is: " + xhttp.readyState + " with status " + xhttp.status);
+                    document.getElementById("getLists").innerHTML = xhttp.responseText;
+                //}
+            };
+            xhttp.open("GET", "http://icarus.cs.weber.edu/~cs79098/CS3750/getLists.php?UserId=1&?callback=?, true);
+            xhttp.send();
 
-                
+
+            alert("DONE");
+*/
             
-            //$('#btnGetList').click(function () {
                 
              $.ajax({
                     type: "GET",
-                    url: "http://icarus.cs.weber.edu/~cs79098/CS3750/getListsblash.php?UserId=1",
-                    contentType: "application/json; charset=utf-8",
-                    data: "{}",
-                    dataType: "json",
+                    url: "http://icarus.cs.weber.edu/~cs79098/CS3750/getLists.php?UserId=1&?callback=?",
+                    dataType: 'jsonp',
                     success: function (data) { 
                         $('.text').text(JSON.stringify(data)); 
-                    }
-                    error: function () {}
+                    },
+                    error: function () {$('.text').html("AJAX ERROR");}
                    });
-                    
-*/
-            alert("Start Ajax");                    
-
-            $('.text').html("testjqery"); 
             
+                            alert("done with ajjax call");                    
 
-            alert("done with ajjax call");                    
+                    
+                /*
+                $('.text').html("test"); 
+                $.ajax({
+                    url: 'http://icarus.cs.weber.edu/~cs79098/CS3750/getLists.php?UserId=1&?callback=?',
+                    success: function(data){
+                        $('.text').html(data);
+                    },
+                    error: function(){
+                        $('.text').html("ERROR");
+                    }
+                });
+               */
 
         </script>
         
