@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html >
 <!--
     Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
 
@@ -55,17 +55,7 @@
         <script>
             var url = "http://icarus.cs.weber.edu/~cs79098/CS3750/getLists.php?UserId=1";
 
-            $.get(url).done(function (data) {
-                    alert(data);
-            });
-
-            // Using XMLHttpRequest
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", url, true);
-            xhr.onload = function () {
-                alert(xhr.responseText);
-            };
-            xhr.send();
+            
             
             //alert("done with ajjax call");                    
                 
