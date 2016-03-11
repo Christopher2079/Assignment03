@@ -27,11 +27,17 @@
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
+        <title>ToDo List</title>
+        <meta name="viewpoint" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script language="JavaScript" src="sha256.js"></script>
 
     </head>
     
     <body>
+        <!--
         <div class="app">
             <h1>PhoneGap</h1>
             <div id="deviceready" class="blink">
@@ -39,9 +45,47 @@
                 <p class="event received">Device is Ready</p>
             </div>
         </div>
-        <button id="btnGetList" class="Button" type="button" onclick="getLists()" >Click Me!</button>
-
-        <div id="text" class="text">Replace me</div>
+        -->
+        <!--<button id="btnGetList" class="Button" type="button" onclick="getLists()" >Click Me!</button>-->
+        <div class="container">
+            <!--creates the tabs on the top of the screen-->
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#login">Login</a></li>
+                <li><a data-toggle="tab" href="#signUp">Sign up</a></li>
+                <li><a data-toggle="tab" href="#list">List</a></li>
+            </ul>
+            
+            <!--creates the content in the login-->
+            <div class="tab-content">
+                <div id="login" class="tab-pane fade in active">
+                    <p>Use you user name and password to see your to-do lists</p>
+                    <form id="formLogin">
+                        User name: <input type="text" id="userName"><br>
+                        Password: <input type="text" id="password"><br>
+                        <p id="ableTologin"></p><br>
+                        <button onclick="signIn()">Login</button>
+                    </form>
+                </div>
+                
+                <!--creates the content in the create user-->
+                <div id="signUp" class="tab-pane fade">
+                    <p>Create a user name and password to create an account</p>
+                    <form id="formCreateUser">
+                        User name: <input type="text" id="user"><br>
+                        Password: <input type="text" id="pass"><br>
+                        Confirm Password: <input type="text" id="confirmPass"><br>
+                        <p id="createdUser"></p>
+                    </form>
+                    <button onclick="createUser()">Sign up</button>
+                </div>
+                
+                <!--creates the content in the toDo list-->
+                <div id="list" class="tab-pane fade" onclick="getList()">
+                    <p>This is where the list will go.</p>
+                </div>
+            </div>
+        </div>
+        <!--<div id="text" class="text">Replace me</div>-->
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
@@ -90,6 +134,45 @@
 */
 
         </script>
-        
+        <script type="text/javascript">
+            function signIn()
+            {
+                var userName = document.getElementById("userName").value;
+                var password = document.getElementById("password").value;
+                
+                //get the hash value of the password
+                var hashPassword = sha256(password);
+                //call the server and verify & get their todo list
+            }
+            function createUser()
+            {
+                var userName = document.getElementById("user").value;
+                var password = document.getElementById("pass").value;
+                var cPass = document.getElementById("confirmPass").value;
+                // check that the passwords match
+                if(password != cPass)
+                    document.getElementById("createdUser").innerHTML = "Password did not match. Try again.";
+                else if(typeof userName == 'undefined')
+                    document.getElementById("createdUser").innerHTML = "Please enter in a user name";
+                else
+                {
+                    // convert the password to a hash
+                    var hash = sha256(password);
+                    var hashC = sha256(cPass);
+                    if(hash != hashC)
+                        document.getElementById("createdUser").innerHTML = "hash didn't match";
+                    else
+                    {
+                        // check to see if the user exits
+                        // create the user  
+                        document.getElementById("createdUser").innerHTML = "user created. Go ahead and login";
+                    }
+                }
+            }
+            function getList()
+            {
+                //call the server and get the list
+            }
+        </script>
     </body>
 </html>
