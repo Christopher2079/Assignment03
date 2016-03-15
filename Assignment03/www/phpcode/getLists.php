@@ -1,4 +1,4 @@
-<?php 
+<?php header('Access-Control-Allow-Origin: *');
     $UserId = -1;
     $UserId = $_REQUEST["UserId"];
     //echo "test1";

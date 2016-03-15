@@ -182,7 +182,7 @@
                             }
                         }
                     };
-                    xhttp.open("GET", "userLogin.php?UserName='" + userName + "'&Password='"+hashPassword+"'", true);
+                    xhttp.open("GET", "http://icarus.cs.weber.edu/~cs79098/CS3750/Assign3/userLogin.php?UserName='" + userName + "'&Password='"+hashPassword+"'", true);
                     xhttp.send();
 
                 }
@@ -220,7 +220,7 @@
                                 document.getElementById("createdUser").innerHTML = xhttp.responseText;
                             }
                         };
-                        xhttp.open("GET", "chkUserExists.php?UserName='" + userName + "'&Password='"+hash+"'", true);
+                        xhttp.open("GET", "http://icarus.cs.weber.edu/~cs79098/CS3750/Assign3/chkUserExists.php?UserName='" + userName + "'&Password='"+hash+"'", true);
                         xhttp.send();
                            
                     }
@@ -234,7 +234,7 @@
                             document.getElementById("UserLists").innerHTML = xhttp.responseText;
                     }
                 };
-                xhttp.open("GET", "getLists.php?UserId=" + loggedInUser , true);
+                xhttp.open("GET", "http://icarus.cs.weber.edu/~cs79098/CS3750/Assign3/getLists.php?UserId=" + loggedInUser , true);
                 xhttp.send();
             }
         </script>
