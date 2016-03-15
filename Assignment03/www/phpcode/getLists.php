@@ -9,13 +9,16 @@
             'Jaysoncs!',
             'W01162084');
 
-        $sql = "SELECT * FROM Lists WHERE ListId = " . $UserId;
+        $sql = "SELECT ListName FROM Lists li 
+                Join UserList ul on li.ListId = ul.ListId
+                JOIN User us ON ul.UserId = us.UserId
+                WHERE us.UserId = " . $UserId;
 
 
         $result = mysqli_query($db, $sql);
         if ($result) {
             while ($row = mysqli_fetch_assoc($result)) {
-                echo sprintf("ListId: %s | ListName: %s ", htmlspecialchars($row['ListId']), htmlspecialchars($row['ListName']));
+                echo sprintf("| %s |", htmlspecialchars($row['ListName']));
                // echo "<br>";
             }
         } 
