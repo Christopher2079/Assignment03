@@ -9,7 +9,7 @@
             'Jaysoncs!',
             'W01162084');
 
-        $sql = "SELECT ListName FROM Lists li 
+        $sql = "SELECT li.ListId, li.ListName FROM Lists li 
                 Join UserList ul on li.ListId = ul.ListId
                 JOIN User us ON ul.UserId = us.UserId
                 WHERE us.UserId = " . $UserId;
@@ -19,7 +19,16 @@
         if ($result) {
             while ($row = mysqli_fetch_assoc($result)) {
                 echo sprintf("| %s |", htmlspecialchars($row['ListName']));
-               // echo "<br>";
+                echo "<br>";
+                $sql = "Select ItemId, ItemName FROM ListItems Where ListId = ".htmlspecialchars($row['ListId']);
+                $itemResult = mysqli_query($db, $sql);
+                if($itemResult)
+                {
+                    while($row = mysqli_fetch_assoc($itemResult)){
+                        echo sprintf("* %s", htmlspecialchars($row['ItemName']));
+                        echo "<br>";
+                    }
+                }
             }
         } 
         else {
