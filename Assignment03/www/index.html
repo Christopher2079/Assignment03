@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+﻿<!DOCTYPE HTML>
 <html>
 <head>
     <title>Todo List</title>
@@ -60,6 +60,24 @@
                     <button onclick="createUser()">Sign up</button>
                 </div>
                 <div id="list" onclick="getList()">
+
+                    <!--Action Buttons for Lists-->
+                    <div>
+                        <a onclick="showCreateForm()" href="#">New List</a>
+                        <a href="#">Edit List</a>
+                    </div>
+
+                    <!--Hidden form that shows up when you click New List Button-->
+                    <!--As of right now, just takes in a List name and a single list item, i'll talk with you guys about how we want to do this-->
+                    <div id="new-list">
+                        <form id="create-list">
+                            List name: <input type="text" id="list-name" />
+                            List item: <input type="text" id="list-item" />
+                        </form>
+                        <button onclick="createList()">Add List</button>
+                        <button onclick="cancelCreate()">Cancel</button>
+                    </div>
+
                     <!--Contains the user's lists, this will probably be changed into a list-->
                     <p id="UserLists"></p>
 
@@ -71,3 +89,13 @@
 </body>
 
 </html>
+
+<script>
+    function showCreateForm() {
+        document.getElementById('new-list').style.cssText = 'display: block;';
+    }
+
+    function cancelCreate() {
+        document.getElementById('new-list').style.cssText = 'display: none;';
+    }
+</script>
