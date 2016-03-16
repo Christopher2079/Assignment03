@@ -117,3 +117,9 @@ h1 {
     height:100px;
     width: 200px;
 }
+
+/*new list form*/
+
+#new-list{
+    display: none;
+}
