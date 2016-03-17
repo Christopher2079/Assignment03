@@ -18,7 +18,7 @@ function DisplayInfo() {
     
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
-        alert(xhttp.readyState);
+        alert("Ready State: " + xhttp.readyState + ", Status: " + xhttp.status);
         if (xhttp.readyState === 4 && xhttp.status === 200) {
             //document.getElementById("simpleReturn").innerHTML = xhttp.responseText;
             alert(xhttp.responseText);
