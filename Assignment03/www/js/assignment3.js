@@ -15,24 +15,26 @@ function getList() {
 
 function DisplayInfo() {
     "use strict";
-    
+    /*
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
-        alert("Ready State: " + xhttp.readyState + ", Status: " + xhttp.status);
+        //alert("Ready State: " + xhttp.readyState + ", Status: " + xhttp.status);
         if (xhttp.readyState === 4 && xhttp.status === 200) {
-            //document.getElementById("simpleReturn").innerHTML = xhttp.responseText;
-            alert(xhttp.responseText);
+            document.getElementById("simpleReturn").innerHTML = xhttp.responseText;
+            //alert(xhttp.responseText);
         }
         
     };
     xhttp.open("GET", "http://icarus.cs.weber.edu/~cs79098/CS3750/Assign3/simpleReturn.php", true);
     xhttp.send();
     
-    
+    */
     window.setInterval(function () {
         document.getElementById("Loggedin").innerHTML = userIsLoggedIn;
         document.getElementById("LoggedinUser").innerHTML = loggedInUser;
-        getList();
+        if(loggedInUser > 0) {
+            getList();
+        }
         
     }, 100);
     
