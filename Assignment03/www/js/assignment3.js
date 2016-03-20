@@ -1,6 +1,14 @@
 var userIsLoggedIn = false;
 var loggedInUser = -1;
 
+function showCreateForm() {
+    document.getElementById('new-list').style.cssText = 'display: block;';
+}
+
+function cancelCreate() {
+    document.getElementById('new-list').style.cssText = 'display: none;';
+}
+
 function getList() {
     "use strict";
     var xhttp = new XMLHttpRequest();
@@ -10,6 +18,18 @@ function getList() {
         }
     };
     xhttp.open("GET", "http://icarus.cs.weber.edu/~cs79098/CS3750/Assign3/getLists.php?UserId=" + loggedInUser, true);
+    xhttp.send();
+}
+
+function getItems() {
+    "use strict";
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (xhttp.readyState === 4 && xhttp.status === 200) {
+            document.getElementById("UserItems").innerHTML = xhttp.responseText;
+        }
+    };
+    xhttp.open("GET", "http://icarus.cs.weber.edu/~cs79098/CS3750/Assign3/getItems.php?UserId=" + loggedInUser, true);
     xhttp.send();
 }
 
@@ -29,16 +49,16 @@ function DisplayInfo() {
     xhttp.send();
     
     */
-    window.setInterval(function () {
-        document.getElementById("Loggedin").innerHTML = userIsLoggedIn;
-        document.getElementById("LoggedinUser").innerHTML = loggedInUser;
-        if(loggedInUser > 0) {
-            getList();
-        }
-        
-    }, 100);
-    
-    
+    //window.setInterval(function () {
+    //    document.getElementById("Loggedin").innerHTML = userIsLoggedIn;
+    //    document.getElementById("LoggedinUser").innerHTML = loggedInUser;
+    //    if (loggedInUser > 0) {
+    //        getList();
+    //    }
+
+    //}, 100);
+
+
 }
 
 function signIn() {
@@ -85,14 +105,14 @@ function createUser() {
         password = document.getElementById("pass").value,
         cPass = document.getElementById("confirmPass").value;
     userName = document.getElementById("user").value;
-    
+
     // check that the passwords match
     if (password !== cPass || password === "" || cPass === "") {
         document.getElementById("createdUser").innerHTML = "Password did not match. Try again.";
-        
+
     } else if (password.length < 6) {
         document.getElementById("createdUser").innerHTML = "Password Must be greater than 5 characters";
-        
+
     } else if (typeof userName === 'undefined' || userName === "") {
         document.getElementById("createdUser").innerHTML = "Please enter in a user name";
     } else {
@@ -102,7 +122,7 @@ function createUser() {
 
         if (hash !== hashC) {
             document.getElementById("createdUser").innerHTML = "hash didn't match";
-            
+
         } else {
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function () {
@@ -116,4 +136,3 @@ function createUser() {
         }
     }
 }
-            
