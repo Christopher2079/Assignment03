@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+﻿<!DOCTYPE HTML>
 <html>
 <head>
     <title>Todo List</title>
@@ -71,7 +71,6 @@
                     <!--Action Buttons for Lists-->
                     <div>
                         <a onclick="showCreateForm()" href="#">New List</a>
-                        <a href="#">Edit List</a>
                     </div>
 
                     <!--Hidden form that shows up when you click New List Button-->
@@ -87,6 +86,7 @@
 
                     <!--Contains the user's lists, this will probably be changed into a list-->
                     <p id="UserLists"></p>
+                    <p id="UserItems"></p>
 
                 </div>
             </div>
@@ -96,13 +96,3 @@
 </body>
 
 </html>
-
-<script>
-    function showCreateForm() {
-        document.getElementById('new-list').style.cssText = 'display: block;';
-    }
-
-    function cancelCreate() {
-        document.getElementById('new-list').style.cssText = 'display: none;';
-    }
-</script>
