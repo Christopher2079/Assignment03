@@ -19,7 +19,16 @@
         if ($result) {
             while ($row = mysqli_fetch_assoc($result)) {
                 echo sprintf("| %s |", htmlspecialchars($row['ListName']));
-                echo "<br>";                
+                echo "<br>";
+                $sql = "Select ItemId, ItemName FROM ListItems Where ListId = ".htmlspecialchars($row['ListId']);
+                $itemResult = mysqli_query($db, $sql);
+                if($itemResult)
+                {
+                    while($row = mysqli_fetch_assoc($itemResult)){
+                        echo sprintf("* %s", htmlspecialchars($row['ItemName']));
+                        echo "<br>";
+                    }
+                }
             }
         } 
         else {
