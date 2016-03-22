@@ -18,17 +18,44 @@
         $result = mysqli_query($db, $sql);
         if ($result) {
             while ($row = mysqli_fetch_assoc($result)) {
-                echo sprintf("| %s |", htmlspecialchars($row['ListName']));
-                echo "<br>";
+                echo '<ul data-role="listview" data-split-icon="plus" data-theme="a" data-split-theme="b" data-inset="true">
+                        <li><a href="#">
+                        <h2>'.htmlspecialchars($row['ListName']).'</h2>
+                        </a><a href="#'.htmlspecialchars($row['ListId']).'_addItem" data-rel="popup" data-position-to="window" data-transition="pop">Add Item</a>
+                    </li>
+                    
+                    <div data-role="popup" id="'.htmlspecialchars($row['ListId']).'_addItem" data-theme="a" data-overlay-theme="b" class="ui-content" style="max-width:340px; padding-bottom:2em;">
+                        <h3>Add Item</h3>
+                        <p>Enter Item Information: </p>
+                        <form id="addItem">
+                            Item Name: <input type="text" id="addItemName"><br>
+                        </form>
+                        <a href="index.html" data-rel="back" class="ui-shadow ui-btn ui-corner-all ui-btn-inline ui-mini" onclick="addItem('.htmlspecialchars($row['ListId']).');">Add Item</a>
+                    <a href="index.html" data-rel="back" class="ui-shadow ui-btn ui-corner-all ui-btn-inline ui-mini">Cancel</a>
+                    </div>';
+                    
                 $sql = "Select ItemId, ItemName FROM ListItems Where ListId = ".htmlspecialchars($row['ListId']);
                 $itemResult = mysqli_query($db, $sql);
                 if($itemResult)
                 {
                     while($row = mysqli_fetch_assoc($itemResult)){
-                        echo sprintf("* %s", htmlspecialchars($row['ItemName']));
-                        echo "<br>";
+                        
+                        
+                        echo '<li><a href="#">
+                                <h2>'.htmlspecialchars($row['ItemName']).'</h2>
+                                </a><a href="#'.htmlspecialchars($row['ItemId']).'_editItem" data-theme="a" data-rel="popup" data-position-to="window" data-transition="pop">'.htmlspecialchars($row['ItemName']).'</a>
+                            </li>
+                            
+                            <div data-role="popup" id="'.htmlspecialchars($row['ItemId']).'_editItem" data-theme="a" data-overlay-theme="b" class="ui-content" style="max-width:340px; padding-bottom:2em;">
+                            <h3>Edit Item</h3>
+                            <a href="index.html" data-rel="back" class="ui-shadow ui-btn ui-corner-all ui-btn-inline ui-mini" onclick="removeItem('.htmlspecialchars($row['ItemId']).');">Remove Item</a>
+                            <a href="index.html" data-rel="back" class="ui-shadow ui-btn ui-corner-all ui-btn-inline ui-mini" onclick="checkOffItem('.htmlspecialchars($row['ItemId']).');">Check Off</a>
+                            <a href="index.html" data-rel="back" class="ui-shadow ui-btn ui-corner-all ui-btn-inline ui-mini">Cancel</a>
+                        </div>';
+                        
                     }
                 }
+                echo '</ul>';
             }
         } 
         else {
@@ -41,3 +68,28 @@
     }
 
 ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -14,11 +14,14 @@ function getList() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (xhttp.readyState === 4 && xhttp.status === 200) {
-            document.getElementById("UserLists").innerHTML = xhttp.responseText;
+            $('#UserLists').append(xhttp.responseText).enhanceWithin();
+            
         }
     };
     xhttp.open("GET", "http://icarus.cs.weber.edu/~cs79098/CS3750/Assign3/getLists.php?UserId=" + loggedInUser, true);
     xhttp.send();
+        
+
 }
 
 function DisplayInfo() {
@@ -37,14 +40,10 @@ function DisplayInfo() {
     xhttp.send();
     
     */
-    //window.setInterval(function () {
-    //    document.getElementById("Loggedin").innerHTML = userIsLoggedIn;
-    //    document.getElementById("LoggedinUser").innerHTML = loggedInUser;
-    //    if (loggedInUser > 0) {
-    //        getList();
-    //    }
+    window.setInterval(function () {
+       
 
-    //}, 100);
+    }, 100);
 
 
 }
@@ -122,5 +121,33 @@ function createUser() {
             xhttp.send();
 
         }
+    }
+}
+
+
+
+function addItem(ListId) {
+    var addItemName = document.getElementById("addItemName").value;
+    
+    if(addItemName === "") {
+        alert("Item Not Added, Please enter a item name");
+    } else {
+        alert("Item has been added");
+    }
+}
+
+function removeItem(Id) {
+    var addItemId = document.getElementById("addItemName").value;
+    
+    alert("Item has been Removed");
+}
+
+function checkOffItem(Id) {
+    var addItemName = document.getElementById("addItemName").value;
+    
+    if(addItemName === "") {
+        alert("Item Not checked off, ERROR");
+    } else {
+        alert("Item has been checked off");
     }
 }
