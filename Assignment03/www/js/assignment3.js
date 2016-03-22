@@ -21,18 +21,6 @@ function getList() {
     xhttp.send();
 }
 
-function getItems() {
-    "use strict";
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (xhttp.readyState === 4 && xhttp.status === 200) {
-            document.getElementById("UserItems").innerHTML = xhttp.responseText;
-        }
-    };
-    xhttp.open("GET", "http://icarus.cs.weber.edu/~cs79098/CS3750/Assign3/getItems.php?UserId=" + loggedInUser, true);
-    xhttp.send();
-}
-
 function DisplayInfo() {
     "use strict";
     /*
