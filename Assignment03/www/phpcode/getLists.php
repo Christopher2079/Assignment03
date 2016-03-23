@@ -102,7 +102,7 @@
         
     } 
     else{
-        echo "ERROR! No Lists found";
+        echo "Please Login to see your lists";
     }
 
 ?>

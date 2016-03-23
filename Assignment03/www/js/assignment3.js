@@ -1,13 +1,6 @@
 var userIsLoggedIn = false;
 var loggedInUser = -1;
 
-function showCreateForm() {
-    document.getElementById('new-list').style.cssText = 'display: block;';
-}
-
-function cancelCreate() {
-    document.getElementById('new-list').style.cssText = 'display: none;';
-}
 
 function getList() {
     "use strict";
@@ -26,24 +19,9 @@ function getList() {
 
 function DisplayInfo() {
     "use strict";
-    /*
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        //alert("Ready State: " + xhttp.readyState + ", Status: " + xhttp.status);
-        if (xhttp.readyState === 4 && xhttp.status === 200) {
-            document.getElementById("simpleReturn").innerHTML = xhttp.responseText;
-            //alert(xhttp.responseText);
-        }
-        
-    };
-    xhttp.open("GET", "http://icarus.cs.weber.edu/~cs79098/CS3750/Assign3/simpleReturn.php", true);
-    xhttp.send();
-    
-    */
     window.setInterval(function () {
-       
-
-    }, 100);
+       getList(); 
+    }, 1000);
 
 
 }
@@ -79,11 +57,7 @@ function signIn() {
         };
         xhttp.open("GET", "http://icarus.cs.weber.edu/~cs79098/CS3750/Assign3/userLogin.php?UserName='" + userName + "'&Password='" + hashPassword + "'", true);
         xhttp.send();
-
     }
-
-
-
 }
 
 function createUser() {
@@ -133,6 +107,23 @@ function addItem(ListId) {
         alert("Item Not Added, Please enter a item name");
     } else {
         alert("Item has been added");
+        
+        /*
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            //alert("Ready State: " + xhttp.readyState + ", Status: " + xhttp.status);
+            if (xhttp.readyState === 4 && xhttp.status === 200) {
+                document.getElementById("simpleReturn").innerHTML = xhttp.responseText;
+                //alert(xhttp.responseText);
+            }
+
+        };
+        //need to pass in the item name and the list id
+        xhttp.open("GET", "http://icarus.cs.weber.edu/~cs79098/CS3750/Assign3/someLink.php", true);
+        xhttp.send();
+
+        */
+        
     }
     document.getElementById("addItemName").value = "";
 }
@@ -140,14 +131,54 @@ function addItem(ListId) {
 function removeItem(ItemId) {
     
     alert("Item has been Removed");
+    
+    /*
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        //alert("Ready State: " + xhttp.readyState + ", Status: " + xhttp.status);
+        if (xhttp.readyState === 4 && xhttp.status === 200) {
+            document.getElementById("simpleReturn").innerHTML = xhttp.responseText;
+            //alert(xhttp.responseText);
+        }
+
+    };
+    //need to pass in the item Id
+    xhttp.open("GET", "http://icarus.cs.weber.edu/~cs79098/CS3750/Assign3/someLink.php", true);
+    xhttp.send();
+
+    */
 }
 
 function checkOffItem(ItemId, isCheckedOff) {
     
+    /*
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        //alert("Ready State: " + xhttp.readyState + ", Status: " + xhttp.status);
+        if (xhttp.readyState === 4 && xhttp.status === 200) {
+            document.getElementById("simpleReturn").innerHTML = xhttp.responseText;
+            //alert(xhttp.responseText);
+        }
+    };
+    */
+
+    
     if(!isCheckedOff) {
         alert("Item has been checked off");
+        
+        /*
+        //Need to pass a value = 1 and that will be used to change the status of the item
+        xhttp.open("GET", "http://icarus.cs.weber.edu/~cs79098/CS3750/Assign3/someLink.php", true);
+        xhttp.send();
+        */
+        
     } else {
         alert("Item has been unchecked");
+        /*
+        //Need to pass a value = 0 and that will be used to change the status of the item
+        xhttp.open("GET", "http://icarus.cs.weber.edu/~cs79098/CS3750/Assign3/someLink.php", true);
+        xhttp.send();
+        */
     }
 }
 
@@ -159,6 +190,40 @@ function createList(){
         alert("List Not Added, Please enter a List name");
     } else {
         alert("New list has been created");
+        
+        /*
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            //alert("Ready State: " + xhttp.readyState + ", Status: " + xhttp.status);
+            if (xhttp.readyState === 4 && xhttp.status === 200) {
+                document.getElementById("simpleReturn").innerHTML = xhttp.responseText;
+                //alert(xhttp.responseText);
+            }
+
+        };
+        //need to pass in ListName and listId
+        xhttp.open("GET", "http://icarus.cs.weber.edu/~cs79098/CS3750/Assign3/someLink.php", true);
+        xhttp.send();
+
+        */
+        
+        //This next call will be used to link the user to the new list in the UserList table
+        /*
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            //alert("Ready State: " + xhttp.readyState + ", Status: " + xhttp.status);
+            if (xhttp.readyState === 4 && xhttp.status === 200) {
+                document.getElementById("simpleReturn").innerHTML = xhttp.responseText;
+                //alert(xhttp.responseText);
+            }
+
+        };
+        //need to pass in Logged in user ID, the new list ID will be grabbed by an sql statment for the "newest" list id
+        xhttp.open("GET", "http://icarus.cs.weber.edu/~cs79098/CS3750/Assign3/someLink.php", true);
+        xhttp.send();
+
+        */
+        
     }
     document.getElementById("list-name").value = "";
 }
