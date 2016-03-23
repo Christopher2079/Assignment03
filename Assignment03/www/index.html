@@ -55,6 +55,65 @@
                         <p id="ableTologin"></p><br>
                     </form>
                     <button onclick="signIn()">Login</button>
+                    
+                    
+                    
+                    <!--
+                    <ul data-role="listview" data-icon="false" data-theme="a" data-split-theme="b" data-inset="true">
+                        <li><a href="#AddList" data-rel="popup" data-position-to="window" data-transition="pop">
+                            <h2><Center>Add New List</Center></h2>
+                            </a>
+                        </li>
+                        
+                        <div data-role="popup" id="AddList" data-theme="a" data-overlay-theme="b" class="ui-content" style="max-width:340px; padding-bottom:2em;">
+                            <h3>Add New List</h3>
+                            <p>Enter List Information: </p>
+                            <form id="addItem">
+                                List name: <input type="text" id="list-name" />
+                            </form>
+                            <a href="index.html" data-rel="back" class="ui-shadow ui-btn ui-corner-all ui-btn-inline ui-mini" onclick="createList();">Create List</a>
+                            <a href="index.html" data-rel="back" class="ui-shadow ui-btn ui-corner-all ui-btn-inline ui-mini">Cancel</a>
+                        </div>
+                    </ul>
+                    
+                    
+                    <ul data-role="listview" data-split-icon="plus" data-theme="a" data-split-theme="b" data-inset="true">
+                    <li><a href="#">
+                        <h2>List Title</h2>
+                        </a><a href="#Num_addItem" data-rel="popup" data-position-to="window" data-transition="pop" >Add Item</a>
+                    </li>
+                    
+
+                    <div data-role="popup" id="Num_addItem" data-theme="a" data-overlay-theme="b" class="ui-content" style="max-width:340px; padding-bottom:2em;">
+                        <h3>Add Item</h3>
+                        <p>Enter Item Information: </p>
+                        <form id="addItem">
+                            Item Name: <input type="text" id="addItemName"><br>
+                        </form>
+                        <a href="addItem" data-rel="back" class="ui-shadow ui-btn ui-corner-all ui-btn-inline ui-mini" onclick="addItem();">Add Item</a>
+                        <a href="index.html" data-rel="back" class="ui-shadow ui-btn ui-corner-all ui-btn-inline ui-mini">Cancel</a>
+                    </div>
+                    
+                    
+                    <li data-icon="info" ><a href="#" >
+                        <h2>Item Name</h2>
+                        </a><a href="#Num_editItem" data-theme="a" data-rel="popup" data-position-to="window" data-transition="pop">Item Name</a>
+                    </li>
+                    
+                        <div data-role="popup" id="Num_editItem" data-theme="a" data-overlay-theme="b" class="ui-content" style="max-width:340px; padding-bottom:2em;">
+                        <h3>Edit Item</h3>
+                        <a href="index.html" data-rel="back" class="ui-shadow ui-btn ui-corner-all ui-btn-inline ui-mini" onclick="removeItem(1);">Remove Item</a>
+                        <a href="index.html" data-rel="back" class="ui-shadow ui-btn ui-corner-all ui-btn-inline ui-mini" onclick="checkOffItem(1);">Check Off</a>
+                        <a href="index.html" data-rel="back" class="ui-shadow ui-btn ui-corner-all ui-btn-inline ui-mini">Cancel</a>
+                    </div>
+                </ul>
+                    
+                    -->
+                    
+                    
+                    
+                    
+                    
                 </div>
                 <div id="register">
                     <p>Create a user name and password to create an account</p>
@@ -67,17 +126,17 @@
                     <button onclick="createUser()">Sign up</button>
                 </div>
                 <div id="list">
+                    <br>
 
-                    <!--Action Buttons for Lists-->
+                    <!--Action Buttons for Lists
                     <div>
                         <a onclick="showCreateForm()" href="#">New List</a>
                     </div>
-                    
-                    
-                    
-
+                    -->
                     <!--Hidden form that shows up when you click New List Button-->
                     <!--As of right now, just takes in a List name and a single list item, i'll talk with you guys about how we want to do this-->
+                    
+                    <!-- Removed for code that was added into php file
                     <div id="new-list">
                         <form id="create-list">
                             List name: <input type="text" id="list-name" />
@@ -85,8 +144,8 @@
                         </form>
                         <button onclick="createList()">Add List</button>
                         <button onclick="cancelCreate()">Cancel</button>
-                    </div>
-
+                    </div>-->
+                    
                     <!--Contains the user's lists, this will probably be changed into a list-->
                     <div id="UserLists"></div>
                     

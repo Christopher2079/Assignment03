@@ -127,27 +127,38 @@ function createUser() {
 
 
 function addItem(ListId) {
-    var addItemName = document.getElementById("addItemName").value;
-    
-    if(addItemName === "") {
+    var ItemName = document.getElementById("addItemName").value;
+
+    if(ItemName === "") {
         alert("Item Not Added, Please enter a item name");
     } else {
         alert("Item has been added");
     }
+    document.getElementById("addItemName").value = "";
 }
 
-function removeItem(Id) {
-    var addItemId = document.getElementById("addItemName").value;
+function removeItem(ItemId) {
     
     alert("Item has been Removed");
 }
 
-function checkOffItem(Id) {
-    var addItemName = document.getElementById("addItemName").value;
+function checkOffItem(ItemId, isCheckedOff) {
     
-    if(addItemName === "") {
-        alert("Item Not checked off, ERROR");
-    } else {
+    if(!isCheckedOff) {
         alert("Item has been checked off");
+    } else {
+        alert("Item has been unchecked");
     }
+}
+
+function createList(){
+    //use the logged in user id to link the user and the new list
+    var ListName = document.getElementById("list-name").value;
+
+    if(ListName === "") {
+        alert("List Not Added, Please enter a List name");
+    } else {
+        alert("New list has been created");
+    }
+    document.getElementById("list-name").value = "";
 }
