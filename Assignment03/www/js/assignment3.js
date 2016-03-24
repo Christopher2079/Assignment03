@@ -101,29 +101,23 @@ function createUser() {
 
 
 function addItem(ListId) {
-    var ItemName = document.getElementById("addItemName").value;
+    var ItemName = document.getElementById("addItemName"+ListId).value;
 
     if(ItemName === "") {
         alert("Item Not Added, Please enter a item name");
-    } else {
-        alert("Item has been added");
+    } else {        
         
-        /*
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             //alert("Ready State: " + xhttp.readyState + ", Status: " + xhttp.status);
             if (xhttp.readyState === 4 && xhttp.status === 200) {
-                document.getElementById("simpleReturn").innerHTML = xhttp.responseText;
-                //alert(xhttp.responseText);
+                alert(xhttp.responseText);
             }
 
         };
         //need to pass in the item name and the list id
-        xhttp.open("GET", "http://icarus.cs.weber.edu/~cs79098/CS3750/Assign3/someLink.php", true);
+        xhttp.open("GET", "http://icarus.cs.weber.edu/~cs79098/CS3750/Assign3/addItem.php?ItemName='" + ItemName + "'&ListId=" + ListId , true);
         xhttp.send();
-
-        */
-        
     }
     document.getElementById("addItemName").value = "";
 }
