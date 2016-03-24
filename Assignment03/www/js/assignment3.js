@@ -4,11 +4,12 @@ var loggedInUser = -1;
 
 function getList() {
     "use strict";
-    
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (xhttp.readyState === 4 && xhttp.status === 200) {
-            $('#UserLists').empty().append(xhttp.responseText).enhanceWithin();
+            //$('#ListDiv').remove();
+            $('#UserLists').html(xhttp.responseText).enhanceWithin();
+            
             
         }
     };
@@ -21,10 +22,78 @@ function getList() {
 function DisplayInfo() {
     "use strict";
     window.setInterval(function () {
-       getList();
+       getList(); 
     }, 100);
 
 
+}
+
+function createAddListPopup() {
+    $('#AddList-screen').remove();
+    $('#AddList-popup').remove();
+    
+    var PopupDiv =  '<div data-role="popup" id="AddList" data-theme="a" data-overlay-theme="b" class="ui-content" style="max-width:340px; padding-bottom:2em;">'+
+                    '<h3>Add New List</h3>'+
+                    '<p>Enter List Information: </p>'+
+                    '<form id="addItem">'+
+                        'List name: <input type="text" id="list-name"><br>'+
+                    '</form>'+
+                    '<a href="index.html" data-rel="back" class="ui-shadow ui-btn ui-corner-all ui-btn-inline ui-mini" onclick="createList();">Create List</a>'+
+                            '<a href="index.html" data-rel="back" class="ui-shadow ui-btn ui-corner-all ui-btn-inline ui-mini">Cancel</a>'+
+        '<a href="index.html" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Cancel</a>'+
+                    '</div>';
+                            
+    $('#ListPopups').html(PopupDiv).enhanceWithin();
+
+}
+
+function createAddItemPopup(ListId) {
+    $('#'+ListId+'_addItem-screen').remove();
+    $('#'+ListId+'_addItem-popup').remove();
+    var PopupDiv ='<div data-role="popup" id="' + ListId + '_addItem" data-theme="a" data-overlay-theme="b" class="ui-content" style="max-width:340px; padding-bottom:2em;">' + 
+                        '<h3>Add Item</h3>' +
+                        '<p>Enter Item Information: </p>' +
+                        '<form id="addItem">' +
+                            'Item Name: <input type="text" id="addItemName' + ListId + '"><br>' +
+                        '</form>' +
+                        '<a href="index.html" data-rel="back" class="ui-shadow ui-btn ui-corner-all ui-btn-inline ui-mini" onclick="addItem('+ ListId +');">Add Item</a>' +
+                    '<a href="index.html" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Cancel</a>' +
+                    '</div>';
+    //alert(PopupDiv);
+    //document.getElementById("ListPopups").innerHTML = PopupDiv;
+    $('#ListPopups').html(PopupDiv).enhanceWithin();
+
+    
+}
+
+function createEditItemPopup(ItemId, isCheckedOff) {
+    $('#'+ItemId+'_editItem-screen').remove();
+    $('#'+ItemId+'_editItem-popup').remove();
+    var PopupDiv = '';
+    
+    if(!isCheckedOff){
+       PopupDiv =   '<div data-role="popup" id="'+ItemId+'_editItem" data-theme="a" data-overlay-theme="b" class="ui-content" style="max-width:340px; padding-bottom:2em;">' +
+                    '<h3>Edit Item</h3>' +
+                    '<a href="index.html" data-rel="back" class="ui-shadow ui-btn ui-corner-all ui-btn-inline ui-mini" onclick="removeItem('+ItemId+');">Remove Item</a>' +
+                    '<a href="index.html" data-rel="back" class="ui-shadow ui-btn ui-corner-all ui-btn-inline ui-mini" onclick="checkOffItem('+ItemId+','+isCheckedOff+')">Check Off</a>' +
+                    '<a href="index.html" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Cancel</a>'+
+                    '</div>';
+    }
+    else{
+               PopupDiv =   '<div data-role="popup" id="'+ItemId+'_editItem" data-theme="a" data-overlay-theme="b" class="ui-content" style="max-width:340px; padding-bottom:2em;">' +
+                    '<h3>Edit Item</h3>' +
+                    '<a href="index.html" data-rel="back" class="ui-shadow ui-btn ui-corner-all ui-btn-inline ui-mini" onclick="removeItem('+ItemId+');">Remove Item</a>' +
+                    '<a href="index.html" data-rel="back" class="ui-shadow ui-btn ui-corner-all ui-btn-inline ui-mini" onclick="checkOffItem('+ItemId+','+isCheckedOff+')">Uncheck</a>' +
+                    '<a href="index.html" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Cancel</a>'+
+                    '</div>';
+    }
+    
+    
+    //alert(PopupDiv);
+    //document.getElementById("ListPopups").innerHTML = PopupDiv;
+    $('#ListPopups').html(PopupDiv).enhanceWithin();
+
+    
 }
 
 function signIn() {
@@ -132,12 +201,6 @@ function checkOffItem(ItemId, isCheckedOff) {
         xhttp.send();
     } else {
         //alert("Item has been unchecked");
-        xhttp.onreadystatechange = function(){
-            alert("readyState: "+ xhttp.readyState + " Status: " + xhttp.status);
-            if(xhttp.readyState === 4 && xhttp.status === 200){
-                alert(xhttp.responseText);
-            }
-        };
         //Need to pass a value = 0 and that will be used to change the status of the item
         xhttp.open("GET", "http://icarus.cs.weber.edu/~cs79098/CS3750/Assign3/isCheckedOff.php?ItemId=" + ItemId + "&isCheckedOff=0", true);
         xhttp.send();
