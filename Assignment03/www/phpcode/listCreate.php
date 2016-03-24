@@ -11,7 +11,7 @@
         'W01162084');
     //check to see if list name already exists and get the listID
     $sql = "SELECT ListID 
-            FROM List 
+            FROM Lists 
             WHERE ListName = " . $ListName;
 
     $result = mysqli_query($db, $sql);
