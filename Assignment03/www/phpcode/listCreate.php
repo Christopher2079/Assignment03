@@ -16,7 +16,7 @@
 
     $result = mysqli_query($db, $sql);
     if (mysqli_num_rows($result) > 0){
-        while ($row = mysql_fetch_row($result)){
+        while ($row = mysqli_fetch_row($result)){
             $ListID = $row[0];
         }
     }
@@ -28,7 +28,7 @@
 
         $result = mysqli_query($db, $sql);
         if (mysqli_num_rows($result) > 0){
-            while ($row = mysql_fetch_row($result)){
+            while ($row = mysqli_fetch_row($result)){
                 $ListID = $row[0];
             }
         }
