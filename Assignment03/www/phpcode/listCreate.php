@@ -16,8 +16,9 @@
 
     $result = mysqli_query($db, $sql);
     if (mysqli_num_rows($result) > 0){
-        $row = mysql_fetch_row($result);
-        $ListID = $row[0];
+        while ($row = mysql_fetch_row($result)){
+            $ListID = $row[0];
+        }
     }
     else{
         //if it doesn't exist create the list and get the listID
@@ -27,8 +28,9 @@
 
         $result = mysqli_query($db, $sql);
         if (mysqli_num_rows($result) > 0){
-            $row = mysql_fetch_row($result);
-            $ListID = $row[0];
+            while ($row = mysql_fetch_row($result)){
+                $ListID = $row[0];
+            }
         }
     }
     //connect the list to the user
