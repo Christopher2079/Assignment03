@@ -183,13 +183,22 @@ function checkOffItem(ItemId, isCheckedOff) {
 }
 
 function createList(){
-    //use the logged in user id to link the user and the new list
     var ListName = document.getElementById("list-name").value;
 
     if(ListName === "") {
         alert("List Not Added, Please enter a List name");
     } else {
-        alert("New list has been created");
+        //call the php code to add the list to the list table
+        //also have to link it to the user with the userlist table
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function(){
+            if(xhttp.readyState === 4 && xhttp.status === 200){
+                document.getElementById("listCreated").innerHTML = xhttp.responseText;
+            }
+        };
+        xhttp.open("GET","http://icarus.cs.weber.edu/~cs79098/CS3750/Assign3/listCreate.php?UserID='" + loggedInUser + "'&ListName='" + ListName + "'", true);
+        xhttp.send();
+        
         
         /*
         var xhttp = new XMLHttpRequest();
@@ -226,4 +235,5 @@ function createList(){
         
     }
     document.getElementById("list-name").value = "";
+    getList();
 }
