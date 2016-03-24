@@ -123,20 +123,26 @@ function removeItem(ItemId) {
 }
 
 function checkOffItem(ItemId, isCheckedOff) {
-    
     var xhttp = new XMLHttpRequest();
-
-
-    
     if(!isCheckedOff) {
         //alert("Item has been checked off");
+        xhttp.onreadystatechange = function(){
+            alert("readyState: "+ xhttp.readyState + " Status: " + xhttp.status);
+            if(xhttp.readyState === 4 && xhttp.status === 200){
+                alert(xhttp.responseText);
+            }
+        };
         //Need to pass a value = 1 and that will be used to change the status of the item
         xhttp.open("GET", "http://icarus.cs.weber.edu/~cs79098/CS3750/Assign3/isCheckedOff.php?ItemId=" + ItemId + "&isCheckedOff=1", true);
         xhttp.send();
-        
-        
     } else {
         //alert("Item has been unchecked");
+        xhttp.onreadystatechange = function(){
+            alert("readyState: "+ xhttp.readyState + " Status: " + xhttp.status);
+            if(xhttp.readyState === 4 && xhttp.status === 200){
+                alert(xhttp.responseText);
+            }
+        };
         //Need to pass a value = 0 and that will be used to change the status of the item
         xhttp.open("GET", "http://icarus.cs.weber.edu/~cs79098/CS3750/Assign3/isCheckedOff.php?ItemId=" + ItemId + "&isCheckedOff=0", true);
         xhttp.send();

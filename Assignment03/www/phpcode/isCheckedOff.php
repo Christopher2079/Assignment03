@@ -18,7 +18,7 @@
 
     } 
     else{
-        echo "ERROR! Item Name Wrong or List Id < 0";
+        echo "ERROR! ItemId < 0 || ischeckedoff < 0";
     }
 
 ?>
