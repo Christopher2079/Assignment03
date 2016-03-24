@@ -108,13 +108,6 @@ function addItem(ListId) {
     } else {        
         
         var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            //alert("Ready State: " + xhttp.readyState + ", Status: " + xhttp.status);
-            if (xhttp.readyState === 4 && xhttp.status === 200) {
-                alert(xhttp.responseText);
-            }
-
-        };
         //need to pass in the item name and the list id
         xhttp.open("GET", "http://icarus.cs.weber.edu/~cs79098/CS3750/Assign3/addItem.php?ItemName='" + ItemName + "'&ListId=" + ListId , true);
         xhttp.send();
@@ -122,57 +115,32 @@ function addItem(ListId) {
     document.getElementById("addItemName").value = "";
 }
 
-function removeItem(ItemId) {
-    
-    alert("Item has been Removed");
-    
-    /*
+function removeItem(ItemId) {    
     var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        //alert("Ready State: " + xhttp.readyState + ", Status: " + xhttp.status);
-        if (xhttp.readyState === 4 && xhttp.status === 200) {
-            document.getElementById("simpleReturn").innerHTML = xhttp.responseText;
-            //alert(xhttp.responseText);
-        }
-
-    };
     //need to pass in the item Id
-    xhttp.open("GET", "http://icarus.cs.weber.edu/~cs79098/CS3750/Assign3/someLink.php", true);
+    xhttp.open("GET", "http://icarus.cs.weber.edu/~cs79098/CS3750/Assign3/removeItem.php?ItemId=" + ItemId, true);
     xhttp.send();
-
-    */
 }
 
 function checkOffItem(ItemId, isCheckedOff) {
     
-    /*
     var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        //alert("Ready State: " + xhttp.readyState + ", Status: " + xhttp.status);
-        if (xhttp.readyState === 4 && xhttp.status === 200) {
-            document.getElementById("simpleReturn").innerHTML = xhttp.responseText;
-            //alert(xhttp.responseText);
-        }
-    };
-    */
+
 
     
     if(!isCheckedOff) {
-        alert("Item has been checked off");
-        
-        /*
+        //alert("Item has been checked off");
         //Need to pass a value = 1 and that will be used to change the status of the item
-        xhttp.open("GET", "http://icarus.cs.weber.edu/~cs79098/CS3750/Assign3/someLink.php", true);
+        xhttp.open("GET", "http://icarus.cs.weber.edu/~cs79098/CS3750/Assign3/isCheckedOff.php?ItemId=" + ItemId + "&isCheckedOff=1", true);
         xhttp.send();
-        */
+        
         
     } else {
-        alert("Item has been unchecked");
-        /*
+        //alert("Item has been unchecked");
         //Need to pass a value = 0 and that will be used to change the status of the item
-        xhttp.open("GET", "http://icarus.cs.weber.edu/~cs79098/CS3750/Assign3/someLink.php", true);
+        xhttp.open("GET", "http://icarus.cs.weber.edu/~cs79098/CS3750/Assign3/isCheckedOff.php?ItemId=" + ItemId + "&isCheckedOff=0", true);
         xhttp.send();
-        */
+        
     }
 }
 
