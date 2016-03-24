@@ -50,7 +50,7 @@
                         <h3>Add Item</h3>
                         <p>Enter Item Information: </p>
                         <form id="addItem">
-                            Item Name: <input type="text" id="addItemName"><br>
+                            Item Name: <input type="text" id="addItemName'.htmlspecialchars($row['ListId']).'"><br>
                         </form>
                         <a href="index.html" data-rel="back" class="ui-shadow ui-btn ui-corner-all ui-btn-inline ui-mini" onclick="addItem('.htmlspecialchars($row['ListId']).');">Add Item</a>
                     <a href="index.html" data-rel="back" class="ui-shadow ui-btn ui-corner-all ui-btn-inline ui-mini">Cancel</a>
