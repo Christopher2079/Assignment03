@@ -23,7 +23,7 @@ function DisplayInfo() {
     "use strict";
     window.setInterval(function () {
        getList(); 
-    }, 100);
+    }, 500);
 
 
 }
@@ -57,6 +57,7 @@ function createAddItemPopup(ListId) {
                             'Item Name: <input type="text" id="addItemName' + ListId + '"><br>' +
                         '</form>' +
                         '<a href="index.html" data-rel="back" class="ui-shadow ui-btn ui-corner-all ui-btn-inline ui-mini" onclick="addItem('+ ListId +');">Add Item</a>' +
+                        '<a href="index.html" data-rel="back" class="ui-shadow ui-btn ui-corner-all ui-btn-inline ui-mini" onclick="removeList('+ ListId +');">Remove List</a>' +
                     '<a href="index.html" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Cancel</a>' +
                     '</div>';
     //alert(PopupDiv);
@@ -262,4 +263,10 @@ function createList(){
     }
     document.getElementById("list-name").value = "";
     getList();
+}
+
+function removeList(ListId) {
+    //loggedInUser --> this is the active logged in user
+    //need to remove list, list linked to user, and all items that belog to that list.
+    
 }
