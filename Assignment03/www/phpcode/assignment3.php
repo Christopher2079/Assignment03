@@ -1,5 +1,6 @@
 <?php 
-header('Access-Control-Allow-Origin: *', ('Content-Type: application/json'));
+header('Access-Control-Allow-Origin: *');
+header('Content-Type: application/json');
 
     if(isset($_POST['action']) && !empty($_POST['action'])) {
         $action = $_POST['action'];
@@ -17,6 +18,7 @@ header('Access-Control-Allow-Origin: *', ('Content-Type: application/json'));
     }
 
     function getLists(){
+        $return = "";
         if(isset($_POST['UserId']) && !empty($_POST['UserId'])) {
             $UserId = $_POST['UserId'];
             if($UserId > 0) {
@@ -31,22 +33,22 @@ header('Access-Control-Allow-Origin: *', ('Content-Type: application/json'));
                         JOIN User us ON ul.UserId = us.UserId
                         WHERE us.UserId = " . $UserId;
 
-                echo    json_encode('<div id="ListDiv">
+                $return =   '<div id="ListDiv">
 
                         <ul data-role="listview" data-icon="false" data-theme="a" data-split-theme="b" data-inset="true">
                             <li><a href="#AddList" data-rel="popup" data-position-to="window" data-transition="pop" onclick="createAddListPopup();">
                                 <h2><Center>Add New List</Center></h2></a>
                             </li>
-                        </ul>');
+                        </ul>';
 
                 $result = mysqli_query($db, $sql);
                     if ($result) {
                         while ($row = mysqli_fetch_assoc($result)) {
-                            echo    json_encode('<ul data-role="listview" data-split-icon="plus" data-theme="a" data-split-theme="b" data-inset="true">
+                            $return +=    '<ul data-role="listview" data-split-icon="plus" data-theme="a" data-split-theme="b" data-inset="true">
                                     <li><a href="#" >
                                     <h2>'.htmlspecialchars($row['ListName']).'</h2>
                                     </a><a href="#'.htmlspecialchars($row['ListId']).'_addItem" data-rel="popup" data-position-to="window" data-transition="pop" onclick="createAddItemPopup('.htmlspecialchars($row['ListId']).');">Add Item</a>
-                                    </li>');
+                                    </li>';
 
 
 
@@ -54,35 +56,36 @@ header('Access-Control-Allow-Origin: *', ('Content-Type: application/json'));
                             $itemResult = mysqli_query($db, $sql);
                             if($itemResult) {
                                 while($row = mysqli_fetch_assoc($itemResult)) {
-                                    echo json_encode('<li data-icon="info"><a href="#">');
+                                    $return += '<li data-icon="info"><a href="#">';
 
                                     //Check to see if the item in the list has been check off
                                     if(!htmlspecialchars($row['ItemCheckedOff'])){
-                                        echo json_encode('<h2>'.htmlspecialchars($row['ItemName']).'</h2>');
+                                        $return += '<h2>'.htmlspecialchars($row['ItemName']).'</h2>';
                                     }
                                     else {
-                                        echo json_encode('<h2><strike>'.htmlspecialchars($row['ItemName']).'</strike></h2>');
+                                        $return += '<h2><strike>'.htmlspecialchars($row['ItemName']).'</strike></h2>';
                                     }
 
-                                    echo json_encode('</a><a href="#'.htmlspecialchars($row['ItemId']).'_editItem" data-theme="a" data-rel="popup" data-position-to="window" data-transition="pop" onclick="createEditItemPopup('.htmlspecialchars($row['ItemId']).', '.htmlspecialchars($row['ItemCheckedOff']).' );">'.htmlspecialchars($row['ItemName']).'</a>
-                                        </li>');
+                                    $return += '</a><a href="#'.htmlspecialchars($row['ItemId']).'_editItem" data-theme="a" data-rel="popup" data-position-to="window" data-transition="pop" onclick="createEditItemPopup('.htmlspecialchars($row['ItemId']).', '.htmlspecialchars($row['ItemCheckedOff']).' );">'.htmlspecialchars($row['ItemName']).'</a>
+                                        </li>';
 
                                 }
                             }
-                        echo json_encode('</ul>');
-                        echo json_encode('</div>');
+                        $return += '</ul>';
+                        $return += '</div>';
 
                     }
                 } 
                 else {
-                    echo json_encode("No Lists Found");
+                    $return = "No Lists Found";
                 }
 
             } 
             else{
-                echo json_encode("Please Login to see your lists");
+            $return = "Please Login to see your lists";
             }
         }
+        echo $return;
     }
 
     function signIn(){
