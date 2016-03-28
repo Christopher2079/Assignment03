@@ -12,7 +12,6 @@ function DisplayInfo() {
 
 function getList() {
    "use strict";
-    /*
     $.ajax({ url: 'http://icarus.cs.weber.edu/~cs79098/CS3750/Assign3/assignment3.php',
         data: {action: 'getLists', UserId: loggedInUser},
         type: 'post',
@@ -20,17 +19,8 @@ function getList() {
            // alert(output);
             $('#UserLists').html(output).enhanceWithin();
         }
-    }); 
-    */
-    
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (xhttp.readyState == 4 && xhttp.status == 200) {
-            $('#UserLists').html(output.responseText).enhanceWithin();
-        }
-    };
-    xhttp.open("GET", "Assignment1_PostGame.php?action=getLists&UserId=" + loggedInUser , true);
-    xhttp.send();
+    });  
+        
 
 }
 
