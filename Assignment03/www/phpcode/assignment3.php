@@ -1,4 +1,5 @@
-<?php header('Access-Control-Allow-Origin: *');
+<?php 
+header('Access-Control-Allow-Origin: *', ('Content-Type: application/json'));
 
     if(isset($_POST['action']) && !empty($_POST['action'])) {
         $action = $_POST['action'];
@@ -30,22 +31,22 @@
                         JOIN User us ON ul.UserId = us.UserId
                         WHERE us.UserId = " . $UserId;
 
-                echo    '<div id="ListDiv">
+                echo    json_encode('<div id="ListDiv">
 
                         <ul data-role="listview" data-icon="false" data-theme="a" data-split-theme="b" data-inset="true">
                             <li><a href="#AddList" data-rel="popup" data-position-to="window" data-transition="pop" onclick="createAddListPopup();">
                                 <h2><Center>Add New List</Center></h2></a>
                             </li>
-                        </ul>';
+                        </ul>');
 
                 $result = mysqli_query($db, $sql);
                     if ($result) {
                         while ($row = mysqli_fetch_assoc($result)) {
-                            echo    '<ul data-role="listview" data-split-icon="plus" data-theme="a" data-split-theme="b" data-inset="true">
+                            echo    json_encode('<ul data-role="listview" data-split-icon="plus" data-theme="a" data-split-theme="b" data-inset="true">
                                     <li><a href="#" >
                                     <h2>'.htmlspecialchars($row['ListName']).'</h2>
                                     </a><a href="#'.htmlspecialchars($row['ListId']).'_addItem" data-rel="popup" data-position-to="window" data-transition="pop" onclick="createAddItemPopup('.htmlspecialchars($row['ListId']).');">Add Item</a>
-                                    </li>';
+                                    </li>');
 
 
 
@@ -53,33 +54,33 @@
                             $itemResult = mysqli_query($db, $sql);
                             if($itemResult) {
                                 while($row = mysqli_fetch_assoc($itemResult)) {
-                                    echo '<li data-icon="info"><a href="#">';
+                                    echo json_encode('<li data-icon="info"><a href="#">');
 
                                     //Check to see if the item in the list has been check off
                                     if(!htmlspecialchars($row['ItemCheckedOff'])){
-                                        echo'<h2>'.htmlspecialchars($row['ItemName']).'</h2>';
+                                        echo json_encode('<h2>'.htmlspecialchars($row['ItemName']).'</h2>');
                                     }
                                     else {
-                                        echo '<h2><strike>'.htmlspecialchars($row['ItemName']).'</strike></h2>';
+                                        echo json_encode('<h2><strike>'.htmlspecialchars($row['ItemName']).'</strike></h2>');
                                     }
 
-                                    echo '</a><a href="#'.htmlspecialchars($row['ItemId']).'_editItem" data-theme="a" data-rel="popup" data-position-to="window" data-transition="pop" onclick="createEditItemPopup('.htmlspecialchars($row['ItemId']).', '.htmlspecialchars($row['ItemCheckedOff']).' );">'.htmlspecialchars($row['ItemName']).'</a>
-                                        </li>';
+                                    echo json_encode('</a><a href="#'.htmlspecialchars($row['ItemId']).'_editItem" data-theme="a" data-rel="popup" data-position-to="window" data-transition="pop" onclick="createEditItemPopup('.htmlspecialchars($row['ItemId']).', '.htmlspecialchars($row['ItemCheckedOff']).' );">'.htmlspecialchars($row['ItemName']).'</a>
+                                        </li>');
 
                                 }
                             }
-                        echo '</ul>';
-                        echo '</div>';
+                        echo json_encode('</ul>');
+                        echo json_encode('</div>');
 
                     }
                 } 
                 else {
-                    echo "No Lists Found";
+                    echo json_encode("No Lists Found");
                 }
 
             } 
             else{
-            echo "Please Login to see your lists";
+                echo json_encode("Please Login to see your lists");
             }
         }
     }

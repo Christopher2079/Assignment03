@@ -23,7 +23,7 @@ function getList() {
             //$('#UserLists').html(output).enhanceWithin();
         },
         error:function(exception){
-            alert('Exeption:'+exception);
+            //alert('Exeption:'+exception);
             alert(JSON.stringify(output));
         }
     });  
