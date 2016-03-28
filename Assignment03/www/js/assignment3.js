@@ -18,7 +18,11 @@ function getList() {
         success: function(output) {
             alert(output);
             $('#UserLists').html(output).enhanceWithin();
-        }
+        },
+            error: function(){
+                alert("not working");
+
+                }
     });  
         
 
