@@ -14,6 +14,7 @@ function getList() {
    "use strict";
     $.ajax({ url: 'http://icarus.cs.weber.edu/~cs79098/CS3750/Assign3/assignment3.php',
         data: {action: 'getLists', UserId: loggedInUser},
+        dataType: 'text',
         type: 'post',
         success: function(output) {
            // alert(output);
