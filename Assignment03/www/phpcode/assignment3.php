@@ -1,7 +1,7 @@
 <?php header('Access-Control-Allow-Origin: *');
 
-    if(isset($_POST['action']) && !empty($_POST['action'])) {
-        $action = $_POST['action'];
+    if(isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
+        $action = $_REQUEST['action'];
         switch($action) {
             case 'getLists'     : getLists();break;
             case 'signIn'       : signIn();break;
@@ -16,8 +16,8 @@
     }
 
     function getLists(){
-        if(isset($_POST['UserId']) && !empty($_POST['UserId'])) {
-            $UserId = $_POST['UserId'];
+        if(isset($_REQUEST['UserId']) && !empty($_REQUEST['UserId'])) {
+            $UserId = $_REQUEST['UserId'];
             if($UserId > 0) {
                 //echo "Test2";
                 $db = mysqli_connect('localhost',

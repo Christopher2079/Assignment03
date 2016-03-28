@@ -26,7 +26,7 @@ function getList() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (xhttp.readyState == 4 && xhttp.status == 200) {
-            $('#UserLists').html(output).enhanceWithin();
+            $('#UserLists').html(output.responseText).enhanceWithin();
         }
     };
     xhttp.open("GET", "Assignment1_PostGame.php?action=getLists&UserId=" + loggedInUser , true);
