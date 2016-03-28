@@ -15,12 +15,17 @@ function getList() {
     $.ajax({ url: 'http://icarus.cs.weber.edu/~cs79098/CS3750/Assign3/assignment3.php',
         data: {action: 'getLists', UserId: loggedInUser},
         type: 'post',
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
         success: function(output) {
-            alert("Working");
+            alert(JSON.stringify(output));
             //alert(output);
             //$('#UserLists').html(output).enhanceWithin();
         },
-        error:function(exception){alert('Exeption:'+exception);}
+        error:function(exception){
+            alert('Exeption:'+exception);
+            alert(JSON.stringify(output));
+        }
     });  
         
 
