@@ -20,10 +20,7 @@ function getList() {
             //alert(output);
             //$('#UserLists').html(output).enhanceWithin();
         },
-        error: function(){
-                //alert(output.responseText);
-
-        }
+        error:function(exception){alert('Exeption:'+exception);}
     });  
         
 
