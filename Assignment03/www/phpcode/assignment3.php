@@ -85,6 +85,7 @@ header('Content-Type: application/json');
             $return = "Please Login to see your lists";
             }
         }
+        $return["json"] = json_encode($return);
         echo $return;
     }
 
