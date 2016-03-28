@@ -243,6 +243,27 @@
 
     function removeList() {
         //remove the list here
+        
+        $ListId = $_POST["ListId"];        
+
+        if($ListId > 0) {
+            $db = mysqli_connect('localhost',
+                                'W01162084',
+                                'Jaysoncs!',
+                                'W01162084');
+
+            $sql = "DELETE FROM ListItems WHERE ListID = $ListId";
+            $sql2 = "DELETE FROM Lists WHERE ListID = $ListId";
+
+
+            mysqli_query($db, $sql);
+            mysqli_query($db, $sql2);
+
+        } 
+        else{
+            echo "ERROR! ListId < 0";
+        }
+        
     }
 
 ?>
