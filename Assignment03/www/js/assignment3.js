@@ -195,9 +195,15 @@ function createList(){
     getList();
 }
 
-function removeList(ListId) {
-    //loggedInUser --> this is the active logged in user
-    //need to remove list, list linked to user, and all items that belog to that list.
+function removeList(ListId) {    
+    $.ajax({
+        url: 'http://icarus.cs.weber.edu/~cs79098/CS3750/Assign3/assignment3.php',
+        data: { action: 'removeList', ListId: ListId },
+        type: 'post',
+        success: function (output) {
+            // alert(output);
+        }
+    });
     
 }
 
