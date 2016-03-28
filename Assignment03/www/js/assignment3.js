@@ -19,10 +19,10 @@ function getList() {
             alert(output);
             $('#UserLists').html(output).enhanceWithin();
         },
-            error: function(){
-                alert("not working");
+        error: function(){
+                alert(output);
 
-                }
+        }
     });  
         
 
